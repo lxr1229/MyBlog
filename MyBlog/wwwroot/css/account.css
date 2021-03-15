@@ -1,0 +1,6 @@
+﻿.login-box { background-color: white; padding: 20px 50px; }
+.vertical-center { position: absolute; top: 50%; transform: translateY(-50%); }
+.btn-account { height: 40px; padding-right: 20px; padding-left: 20px; border: none; background: #ecb2b8; color: white; box-shadow: -2px 10px 20px -1px #e6cdcf; }
+    .btn-account:hover { color: white !important; background: #fad1d5 }
+.control-group { height: 65px; }
+.form-control:focus { color: #495057; background-color: #fff; border-color: #fad1d5; outline: 0; box-shadow: 0 0 0 0 !important }

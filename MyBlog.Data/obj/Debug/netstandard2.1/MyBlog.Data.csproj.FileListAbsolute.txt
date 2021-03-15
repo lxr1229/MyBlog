@@ -1,0 +1,9 @@
+D:\DotNet\Blog\MyBlog\MyBlog.Data\bin\Debug\netstandard2.1\MyBlog.Data.deps.json
+D:\DotNet\Blog\MyBlog\MyBlog.Data\bin\Debug\netstandard2.1\MyBlog.Data.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Data\bin\Debug\netstandard2.1\MyBlog.Data.pdb
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.csprojAssemblyReference.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.AssemblyInfoInputs.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.AssemblyInfo.cs
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.csproj.CoreCompileInputs.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Data\obj\Debug\netstandard2.1\MyBlog.Data.pdb

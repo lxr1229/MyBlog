@@ -1,0 +1,51 @@
+﻿@model RegisterViewModel
+
+@{
+    Layout = "_LayoutAccount";
+    ViewData["Title"] = "注册";
+}
+
+<div class="justify-content-center row">
+    <div class="login-box col-md-4 vertical-center">
+        <form id="registe_form" asp-action="Register" asp-controller="Account" method="post" style="margin-bottom: 0px; display: block;">
+            <h2 style="color:#ecb2b8 ;margin-bottom:20px">注册</h2>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" placeholder="请输入用户名" class="form-control input_border" asp-for="UserName">
+                    <span asp-validation-for="UserName" class="text-danger "></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" placeholder="请输入邮箱" class="form-control input_border" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="password" placeholder="请输入密码" class="form-control input_border" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="password" placeholder="请再次输入密码" class="form-control input_border" asp-for="ConfirmPassword">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <p style="display: flex; justify-content: space-between;"><span style="color: #cacbcb;">已有帐号？</span><a href="/Account/Login" style="color: gray; text-decoration: none;">登 录</a> </p>
+            </div>
+            <div class="form-group">
+                <div class="text-center">
+                    <button type="submit" class="btn submit btn-account">注册</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*输入内容跟模型定义规则不符时需要验证提示加入此脚本*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

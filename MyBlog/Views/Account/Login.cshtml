@@ -1,0 +1,39 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_LayoutAccount";
+    ViewData["Title"] = "登录";
+}
+
+<div class="justify-content-center row">
+    <div class="login-box col-md-4 vertical-center">
+        <form id="registe_form" asp-action="Login" asp-controller="Account" method="post" style="margin-bottom: 0px; display: block;">
+            <h2 style="color:#ecb2b8 ;margin-bottom:20px">登录</h2>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" placeholder="请输入邮箱" class="form-control input_border" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="password" placeholder="请输入密码" class="form-control input_border" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <p style="display: flex; justify-content: space-between;"><span style="color: #cacbcb;">没有帐号？</span><a href="/Account/Register" style="color: gray; text-decoration: none;">注 册</a> </p>
+            </div>
+            <div class="form-group">
+                <div class="text-center">
+                    <button type="submit" class="btn submit btn-account">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*输入内容跟模型定义规则不符时需要验证提示加入此脚本*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

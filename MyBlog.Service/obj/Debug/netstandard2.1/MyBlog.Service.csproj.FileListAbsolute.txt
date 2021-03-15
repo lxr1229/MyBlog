@@ -1,0 +1,14 @@
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Service.deps.json
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Service.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Service.pdb
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Data.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Repository.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Data.pdb
+D:\DotNet\Blog\MyBlog\MyBlog.Service\bin\Debug\netstandard2.1\MyBlog.Repository.pdb
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.csprojAssemblyReference.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.AssemblyInfoInputs.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.AssemblyInfo.cs
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.csproj.CoreCompileInputs.cache
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.csproj.CopyComplete
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.dll
+D:\DotNet\Blog\MyBlog\MyBlog.Service\obj\Debug\netstandard2.1\MyBlog.Service.pdb

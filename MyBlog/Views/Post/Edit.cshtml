@@ -1,0 +1,56 @@
+﻿@model PostEditViewModel
+
+@{
+    ViewData["Title"] = "文章编辑";
+    var categoryList = ViewBag.CategoryList;
+}
+
+<div>
+    <form asp-controller="Post" asp-action="Edit" method="post">
+        <input asp-for="PostId" type="hidden" />
+        <div>
+            <label>标题</label>
+            <input asp-for="Title" />
+        </div>
+        <div>
+            <label>分类</label>
+            <select class="form-select"  id="post_category">
+                <option selected>请选择分类</option>
+                @foreach (var item in categoryList)
+                {
+                    <option value="@item.CategoryId">@item.CategoryName</option>
+                }
+            </select>
+        </div>
+        <div id="post_editormd">
+            <textarea asp-for="ContentMarkDown" style="display: none;">@Html.Raw(Model.ContentMarkDown)</textarea>
+        </div>
+        <input type="hidden" asp-for="Content" />
+        <input type="submit" value="submit" />
+        <button onclick="btnSave()">保存</button>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        postEditor = editormd("post_editormd", {
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/lib/MarkDown/lib/",
+            saveHTMLToTextarea: true,
+            emoji: true
+        });
+    });
+    function btnSave() {
+        $("#Content").val(postEditor.getHTML());
+        $.ajax({
+            url: "/Post/Edit",
+            type: "Post",
+            data: { PostId: $("#PostId").val(), Title: $("#Title").val(), ContentMarkDown: $("#ContentMarkDown").val(), Content: $("#Content").val(), CategoryId: $("#post_category").val()},
+            success: (data) =>
+                alert(data)
+        });
+    }
+</script>
+
