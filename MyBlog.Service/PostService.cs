@@ -7,10 +7,12 @@ namespace MyBlog.Service
     public class PostService : IPostService
     {
         private readonly IPostRepository _post;
+        private readonly BlogDbContext _context;
 
-        public PostService(IPostRepository post)
+        public PostService(IPostRepository post, BlogDbContext context)
         {
             _post = post;
+            _context = context;
         }
 
         public List<Post> GetPostList()
@@ -21,13 +23,19 @@ namespace MyBlog.Service
         {
             return _post.GetAsync(id).Result;
         }
-        public bool AddPost(Post post)
+        public int AddPost(Post post)
         {
-            return _post.AddAsync(post).Result;
+            _context.Add(post);
+            _context.SaveChanges();
+
+            return post.PostId;
         }
-        public bool UpdatePost(Post post)
+        public int UpdatePost(Post post)
         {
-            return _post.UpdateAsync(post).Result;
+            _context.Update(post);
+            _context.SaveChanges();
+
+            return post.PostId;
         }
         public bool DeletePost(Post post)
         {

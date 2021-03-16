@@ -17,13 +17,13 @@ namespace MyBlog.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> AddAsync(TEntity entity, bool IsCommit = true);
+        Task<bool> AddAsync(TEntity entity, bool IsSave = true);
         /// <summary>
         /// 增加多条记录
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> AddListAsync(List<TEntity> entities, bool IsCommit = true);
+        Task<bool> AddListAsync(List<TEntity> entities, bool IsSave = true);
         #endregion
 
         #region Delete
@@ -32,19 +32,19 @@ namespace MyBlog.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(TEntity entity, bool IsCommit = true);
+        Task<bool> DeleteAsync(TEntity entity, bool IsSave = true);
         /// <summary>
         /// 删除一条或多条记录（根据Lamda表达式）
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool IsCommit = true);
+        Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool IsSave = true);
         /// <summary>
         /// 删除多条记录
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteListAsync(List<TEntity> entities, bool IsCommit = true);
+        Task<bool> DeleteListAsync(List<TEntity> entities, bool IsSave = true);
         #endregion
 
         #region Update
@@ -53,13 +53,13 @@ namespace MyBlog.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> UpdateAsync(TEntity entity, bool IsCommit = true);
+        Task<bool> UpdateAsync(TEntity entity, bool IsSave = true);
         /// <summary>
         /// 更新多条记录
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> UpdateListAsync(List<TEntity> entities, bool IsCommit = true);
+        Task<bool> UpdateListAsync(List<TEntity> entities, bool IsSave = true);
         #endregion
 
         #region Get
@@ -92,11 +92,6 @@ namespace MyBlog.Repository
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> predicate, bool IsCommit = true);
-        /// <summary>
-        /// 保存记录至数据库
-        /// </summary>
-        /// <returns></returns>
-        Task<bool> SaveChangesAsync();
+        Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> predicate, bool IsSave = true);
     }
 }

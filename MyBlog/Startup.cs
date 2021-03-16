@@ -57,8 +57,13 @@ namespace MyBlog
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IPostTagRepository, PostTagRepository>();
             services.AddTransient<IPostService,PostService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ITagService, TagService>();
+            services.AddTransient<IPostTagService, PostTagService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

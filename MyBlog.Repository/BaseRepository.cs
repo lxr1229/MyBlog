@@ -190,14 +190,5 @@ namespace MyBlog.Repository
 
             return await Task.Run(() => entry.Any());
         }
-
-        public async Task<bool> SaveChangesAsync()
-        {
-            if (await _context.SaveChangesAsync() > 0)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }

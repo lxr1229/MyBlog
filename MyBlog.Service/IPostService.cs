@@ -7,8 +7,8 @@ namespace MyBlog.Service
     {
         List<Post> GetPostList(); 
         Post GetPost(int id);
-        bool AddPost(Post post);
-        bool UpdatePost(Post post);
+        int AddPost(Post post);
+        int UpdatePost(Post post);
         bool DeletePost(Post post);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using MyBlog.Data;
 using MyBlog.Repository;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace MyBlog.Service
 {
@@ -20,6 +22,10 @@ namespace MyBlog.Service
         public Category GetCategory(int id)
         {
             return _cate.GetAsync(id).Result;
+        }
+        public Category GetCategory(Expression<Func<Category, bool>> predicate)
+        {
+            return _cate.GetAsync(predicate).Result;
         }
         public bool AddCategory(Category cate)
         {

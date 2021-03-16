@@ -72,6 +72,7 @@ namespace MyBlog.Mvc.Controllers
                     return RedirectToAction("Login");
                 }
             }
+
             return View(model);
         }
 

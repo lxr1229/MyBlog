@@ -35,3 +35,14 @@ body { /* Margin bottom by footer height */ margin-bottom: 60px; }
 .nav-background { background-image: url("../img/navbar.jpg"); opacity: 0.5; }
 .account-background { background-image: url("../img/bg.jpg"); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100%; }
 .dropdown-item.active, .dropdown-item:active { color: #fff; text-decoration: none; background-color: #fdecec; }
+
+.btn-edit { height: 40px; width: 100px; border: none; background: #ecb2b8; color: white; line-height: 40px; border-radius: 15px; }
+    .btn-edit:hover { color: white !important; background: #fad1d5 }
+
+.mb_20 { margin-bottom: 20px; }
+.mt_20 { margin-top: 20px; }
+.mt_40 { margin-top: 40px; }
+.ml_30 { margin-left: 30px !important }
+.ml_15 { margin-left: 15px; }
+.wd_400 { width: 400px }
+.display_flex { display: flex }

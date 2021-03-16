@@ -1,9 +1,35 @@
-﻿@model IEnumerable<MyBlog.Data.Post>
+﻿@model List<PostListViewModel>
 
 @{
     ViewData["Title"] = "首页";
 }
 
-<div class="card">
-    <div class="card-body">简单的卡片</div>
+<div class="post_container">
+    @foreach (var item in Model)
+    {
+        <div class="card mt_40 post_card">
+            <div class="card-body ">
+                <h4 class="card-title post_title">@item.Title</h4>
+                <div class="card-subtitle mb-2 post_info">作者 @item.UserName | 发表于 @item.DateCreated  | 分区 @item.CategoryName | 类型 @item.PostTypeId.ToString() | 阅读量 @item.Views</div>
+                <div class="card-text post_content"><p class="post_content_text">@item.ContentString</p></div>
+                <div>
+                    @foreach (var postTagItem in item.PostTagList)
+                    {
+                        <span class="post_tag">@postTagItem.TagName</span>
+                    }
+                </div>
+                @*<a href="#" class="card-link">Card link</a>*@
+            </div>
+        </div>
+    }
 </div>
+
+<style>
+    .post_container { width: 60%; }
+    .post_card { box-shadow: 0 2px 12px 0 #fff0f2; border: 1px solid #ffdbdb; border-radius: 4px; overflow: hidden; }
+    .post_title { color: #555; font-weight: 400; width: 100%; height: 40px; overflow: hidden; text-overflow: ellipsis; clear: both; text-align: left; }
+    .post_info { width: 100%; font-size: 16px; color: #999; padding: 10px 0; }
+    .post_content { width: 100%; color: #555; font-size: 18px; line-height: 2; padding: 10px 0; }
+    .post_content_text { color: #555; display: block; height: 70px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;  -webkit-box-orient: vertical; }
+    .post_tag { background-color: #fff0f2; border-color: #ffd9d9; color: #555; height: 20px; padding: 5px 10px; line-height: 19px; font-size: 12px; border: 1px solid #ffd9d9; border-radius: 4px; box-sizing: border-box; white-space: nowrap; }
+</style>
