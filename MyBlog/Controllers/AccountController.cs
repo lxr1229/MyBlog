@@ -63,7 +63,8 @@ namespace MyBlog.Mvc.Controllers
                     UserName = model.UserName,
                     Email = model.Email,
                     DateCreated = DateTime.Now
-                };        
+                }; 
+                
                 //创建用户
                 var result = await _userManager.CreateAsync(user,model.Password);
                 //如果成功则返回首页

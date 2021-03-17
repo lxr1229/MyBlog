@@ -6,6 +6,7 @@ using MyBlog.Models;
 using MyBlog.Service;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace MyBlog.Controllers
 {
@@ -28,13 +29,18 @@ namespace MyBlog.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(PostSearchViewModel model)
         {
-            var posts = _post.GetPostList().OrderByDescending(o=>o.DateCreated).ToList();
+            if (model.PageIndex == 0) model.PageIndex = 1;
+            if (model.PageSize == 0) model.PageSize = 10;
 
-            var model = _mapper.Map<List<Post>, List<PostListViewModel>>(posts);
+            IPagedList<Post> posts = _post.GetPostList().OrderByDescending(o=>o.DateCreated).ToList().ToPagedList(model.PageIndex,model.PageSize);
+            // map to IEnumerable
+            IEnumerable<PostListViewModel> postList = _mapper.Map<IEnumerable<PostListViewModel>>(posts);
+            // create an instance of StaticPagedList with the mapped IEnumerable and original IPagedList metadata
+            IPagedList<PostListViewModel> postListViewModel = new StaticPagedList<PostListViewModel>(postList, posts.GetMetaData());
 
-            foreach (var item in model)
+            foreach (var item in postListViewModel)
             {
                 item.UserName = _userManager.FindByIdAsync(item.UserId).Result.UserName;
                 item.CategoryName = _category.GetCategory(o => o.CategoryId == item.CategoryId).CategoryName;
@@ -44,7 +50,15 @@ namespace MyBlog.Controllers
                     postTag.TagName = _tag.GetTag(o => o.TagId == postTag.TagId).TagName;
                 }
             }
-            return View(model);
+
+            var postInfoModel = new PostInfoViewModel
+            { 
+                PostList = postListViewModel, 
+                TagList = _mapper.Map<List<Tag>, List<TagViewModel>>(_tag.GetTagList()) ,
+                CategoryList = _mapper.Map<List<Category>, List<CategoryViewModel>>(_category.GetCategoryList())
+            };
+
+            return View(postInfoModel);
         }
 
         public IActionResult Privacy() 

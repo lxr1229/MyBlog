@@ -1,10 +1,23 @@
-﻿using System;
+﻿using MyBlog.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+using X.PagedList;
 
 namespace MyBlog.Models
 {
+    public class PostSearchViewModel :PageViewModel
+    {
+
+    }
+
+    public class PostInfoViewModel
+    {
+        public IPagedList<PostListViewModel> PostList { get; set; }
+        public List<TagViewModel> TagList { get; set; }
+        public List<CategoryViewModel> CategoryList { get; set; }
+    }
+
     public class PostListViewModel
     {
         public int PostId { get; set; }
@@ -14,7 +27,7 @@ namespace MyBlog.Models
         {
             get
             {
-                return ParseTags(Content);
+                return Extension.ParseTags(Content);
             }
         }
         public string UserId { get; set; }
@@ -25,17 +38,8 @@ namespace MyBlog.Models
         public int Views { get; set; }
         public List<PostTagViewModel> PostTagList { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
-
-
-        /// <summary>
-        /// 移除HTML标签   
-        /// </summary>
-        /// <param name="Htmlstring"></param>
-        /// <returns></returns>
-        public static string ParseTags(string HTMLStr)
-        {
-            return Regex.Replace(HTMLStr, "<[^>]*>", "");
-        }
+        public int CountUserPosts { get; set; }
+        public int CountUserViews { get; set; }
     }
 
     public class PostEditViewModel
@@ -60,5 +64,13 @@ namespace MyBlog.Models
         public string TagString { get; set; }
 
         public DateTime DateCreated { get; set; } = DateTime.Now;
+    }
+
+    public class PostAuthorViewModel
+    {
+        public IPagedList<PostListViewModel> PostList { get; set; }
+        public string UserName { get; set; }
+        public int CountUserPosts { get; set; }
+        public int CountUserViews { get; set; }
     }
 }

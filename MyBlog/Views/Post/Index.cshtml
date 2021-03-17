@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PostListViewModel
+
 @{
+    ViewData["Title"] = "博客";
 }
+<div class="display_flex justify-content-between">
+    <div class="post-container">
+        <div class="card mt_40 post-card">
+            <div class="card-body ">
+                <h4 class="card-title post-title text-center">@Model.Title</h4>
+                <div class="card-subtitle mb-2 post-info  text-center">发表于 @Model.DateCreated  | 分区 @Model.CategoryName | 类型 @Model.PostTypeId.ToString() | 阅读量 @Model.Views</div>
+                <div class="card-text post-content"><p class="post-content-all">@Html.Raw(Model.Content)</p></div>
+                <div class="display_flex justify-content-between">
+                    <div>
+                        @foreach (var postTagItem in Model.PostTagList)
+                        {
+                            <span class="tag-text">@postTagItem.TagName</span>
+                        }
+                    </div>
+                </div>
+                <input type="hidden" id="post_id" value="@Model.PostId" />
+            </div>
+        </div>
+    </div>
+    <div class="right-container">
+        <div class="card mt_40 post-card">
+            <div class="card-body ">
+                <h4 class="card-title post-title">作者信息</h4>
+                <div class="text-center">
+                    <h4>@Model.UserName</h4>
+                </div>
+                <div class="card-subtitle mb-2 post-info  text-center">发表博文 @Model.CountUserPosts 篇   |   总浏览量 @Model.CountUserViews</div>
+            </div>
+        </div>
+    </div>
+</div>

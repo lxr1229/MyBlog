@@ -1,0 +1,42 @@
+﻿@model PostAuthorViewModel
+
+@{
+    ViewData["Title"] = "文章内容";
+}
+<div>
+    <div class="card mt_40 post-card author-background">
+        <div class="card-body ">
+            <div class="text-center">
+                <h4>@Model.UserName</h4>
+            </div>
+            <div class="card-subtitle mb-2 post-info  text-center">发表博文 @Model.CountUserPosts 篇   |   总浏览量 @Model.CountUserViews 次</div>
+        </div>
+    </div>
+</div>
+<div class="display_flex justify-content-between">
+    <div class="author-post-container">
+        @foreach (var item in Model.PostList)
+        {
+            <div class="card mt_40 post-card">
+                <div class="card-body ">
+                    <h4 class="card-title post-title text-left">@item.Title</h4>
+                    <div class="card-subtitle mb-2 post-info">发表于 @item.DateCreated  | 分区 @item.CategoryName | 类型 @item.PostTypeId.ToString() | 阅读量 @item.Views</div>
+                    <div class="card-text post-content"><p class="post-content-text">@item.ContentString</p></div>
+                    <div class="display_flex justify-content-between">
+                        <div>
+                            @foreach (var postTagItem in item.PostTagList)
+                            {
+                                <span class="tag-text">@postTagItem.TagName</span>
+                            }
+                        </div>
+                        <div>
+                            <a asp-controller="Post" asp-action="Index" asp-route-id="@item.PostId" asp- class="post-link">阅读全文</a>
+                        </div>
+                    </div>
+                    <input type="hidden" id="post_id" value="@item.PostId" />
+                </div>
+            </div>
+        }
+        @Html.PagedListPager(Model.PostList, PageIndex => Url.Action("Index", new { PageIndex = PageIndex }))
+    </div>
+</div>

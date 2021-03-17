@@ -16,27 +16,47 @@ namespace MyBlog.Controllers
     {
         private readonly IPostService _post;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICategoryService _cate;
+        private readonly ICategoryService _category;
         private readonly ITagService _tag;
         private readonly IPostTagService _postTag;
         private readonly IMapper _mapper;
         private UserManager<BlogUser> _userManager;
 
-        public PostController(IPostService post, IUnitOfWork unitOfWork, ICategoryService cate, ITagService tag, IPostTagService postTag, IMapper mapper, UserManager<BlogUser> userManager)
+        public PostController(IPostService post, IUnitOfWork unitOfWork, ICategoryService category, ITagService tag, IPostTagService postTag, IMapper mapper, UserManager<BlogUser> userManager)
         {
             _post = post;
             _unitOfWork = unitOfWork;
-            _cate = cate;
+            _category = category;
             _tag = tag;
             _postTag = postTag;
             _mapper = mapper;
             _userManager = userManager;
         }
 
+        public IActionResult Index(int id)
+        {
+            var post = _post.GetPost(id);
+            _post.UpdatePostViews(post);
+
+            var model = _mapper.Map<Post, PostListViewModel>(post);
+
+            model.PostTagList = _mapper.Map<List<PostTag>, List<PostTagViewModel>>(_postTag.GetPostTagList(o => o.PostId == id));
+            model.CategoryName = _category.GetCategory(o => o.CategoryId == model.CategoryId).CategoryName;
+            model.UserName = _userManager.FindByIdAsync(model.UserId).Result.UserName;
+            model.CountUserPosts = _post.GetCountUserPosts(model.UserId);
+            model.CountUserViews = _post.GetCountUserViews(model.UserId).Value;
+            foreach (var postTag in model.PostTagList)
+            {
+                postTag.TagName = _tag.GetTag(o => o.TagId == postTag.TagId).TagName;
+            }
+
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            ViewBag.CategoryList = _cate.GetCategoryList();
+            ViewBag.CategoryList = _category.GetCategoryList();
 
             if (id.HasValue)
             {

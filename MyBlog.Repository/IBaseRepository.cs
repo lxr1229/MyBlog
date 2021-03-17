@@ -93,5 +93,19 @@ namespace MyBlog.Repository
         /// <param name="predicate"></param>
         /// <returns></returns>
         Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> predicate, bool IsSave = true);
+
+        /// <summary>
+        /// 计算总和
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="sum"></param>
+        /// <returns></returns>
+        int? GetSum(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, int?>> sum);
+        /// <summary>
+        /// 查询数量
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        Task<int> GetEntityCountAsync(Expression<Func<TEntity, bool>> predicate);
     }
 }

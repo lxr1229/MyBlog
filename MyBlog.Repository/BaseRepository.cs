@@ -39,11 +39,6 @@ namespace MyBlog.Repository
                 return await Task.Run(() => false);
             }
 
-            //entities.ToList().ForEach(item =>
-            //{
-            //    _context.Set<TEntity>().Add(item);
-            //});
-
             await _context.Set<TEntity>().AddRangeAsync(entities);
 
             if (IsSave)
@@ -189,6 +184,15 @@ namespace MyBlog.Repository
             var entry = _context.Set<TEntity>().Where(predicate);
 
             return await Task.Run(() => entry.Any());
+        }
+
+        public int? GetSum(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, int?>> sum)
+        {
+            return _context.Set<TEntity>().Where(predicate).Sum(sum);
+        }
+        public Task<int> GetEntityCountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().CountAsync(predicate);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using MyBlog.Data;
 using MyBlog.Repository;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace MyBlog.Service
 {
@@ -23,6 +25,10 @@ namespace MyBlog.Service
         {
             return _post.GetAsync(id).Result;
         }
+        public List<Post> GetPostList(Expression<Func<Post, bool>> predicate)
+        {
+            return _post.GetListAsync(predicate).Result;
+        }
         public int AddPost(Post post)
         {
             _context.Add(post);
@@ -37,9 +43,24 @@ namespace MyBlog.Service
 
             return post.PostId;
         }
+        public bool UpdatePostViews(Post post)
+        {
+            post.Views++;
+
+            return _post.UpdateAsync(post).Result;
+        }
         public bool DeletePost(Post post)
         {
             return _post.DeleteAsync(post).Result;
+        }
+
+        public int GetCountUserPosts(string userID)
+        {
+            return _post.GetEntityCountAsync(o => o.UserId == userID).Result;
+        }
+        public int? GetCountUserViews(string userID)
+        {
+            return _post.GetSum(o => o.UserId == userID, o=>o.Views);
         }
     }
 }

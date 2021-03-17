@@ -1,4 +1,4 @@
-﻿namespace MyBlog.Models
+﻿namespace MyBlog.Shared
 {
     public class ConstantsEnum
     {

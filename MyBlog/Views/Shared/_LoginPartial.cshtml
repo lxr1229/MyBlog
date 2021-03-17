@@ -4,14 +4,6 @@
 <ul class="nav navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        @*<li class="nav-item">
-            <a id="manage" class="nav-link text-dark">Hello @UserManager.GetUserName(User)!</a>
-        </li>
-        <li class="nav-item">
-            <form id="logoutForm" class="form-inline" asp-controller="Logout" asp-action="Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
-        </li>*@
         <li class="dropdown">
             <a id="manage" class="dropdown-toggle" data-toggle="dropdown">
                 Hello @UserManager.GetUserName(User)!
@@ -19,7 +11,13 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="/Post/Edit"class="dropdown-item">发表文章</a>
+                    <a asp-controller="Author" asp-action="Index" asp-route-id="@UserManager.GetUserAsync(User).Result.Id" class="dropdown-item">个人主页</a>
+                </li>
+                <li>
+                    <a href="/Admin/Index" class="dropdown-item">个人中心</a>
+                </li>
+                <li>
+                    <a href="/Post/Edit" class="dropdown-item">发表文章</a>
                 </li>
                 <li>
                     <form id="logoutForm" class="form-inline dropdown-item" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

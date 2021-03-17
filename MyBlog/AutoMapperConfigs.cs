@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MyBlog.Data;
 using MyBlog.Models;
-using System.Collections.Generic;
 
 namespace MyBlog
 {
@@ -13,6 +12,8 @@ namespace MyBlog
             CreateMap<Post, PostEditViewModel>();
             CreateMap<Post, PostListViewModel>();
             CreateMap<PostTag, PostTagViewModel>();
+            CreateMap<Tag, TagViewModel>();
+            CreateMap<Category, CategoryViewModel>();
         }
     }
 }
