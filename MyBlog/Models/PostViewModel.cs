@@ -8,7 +8,7 @@ namespace MyBlog.Models
 {
     public class PostSearchViewModel :PageViewModel
     {
-
+        public string SearchKey { get; set; }
     }
 
     public class PostInfoViewModel
@@ -44,7 +44,7 @@ namespace MyBlog.Models
 
     public class PostEditViewModel
     {
-        public int PostId { get; set; }
+        public int? PostId { get; set; }
 
         [Required(ErrorMessage = "请填写标题")]
         public string Title { get; set; }

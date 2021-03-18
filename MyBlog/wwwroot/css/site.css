@@ -39,10 +39,10 @@ body { /* Margin bottom by footer height */ margin-bottom: 60px; }
 .btn-edit { height: 40px; width: 100px; border: none; background: #ecb2b8; color: white; line-height: 40px; border-radius: 15px; }
     .btn-edit:hover { color: white !important; background: #fad1d5 }
 
-.mb_20 { margin-bottom: 20px; }
-.mt_20 { margin-top: 20px; }
-.mt_40 { margin-top: 40px; }
-.ml_30 { margin-left: 30px !important }
-.ml_15 { margin-left: 15px; }
-.wd_400 { width: 400px }
+.mb-20 { margin-bottom: 20px; }
+.mt-20 { margin-top: 20px; }
+.mt-40 { margin-top: 40px; }
+.ml-30 { margin-left: 30px !important }
+.ml-15 { margin-left: 15px; }
+.wd-400 { width: 400px }
 .display_flex { display: flex }

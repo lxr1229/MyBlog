@@ -36,12 +36,9 @@ namespace MyBlog.Service
 
             return post.PostId;
         }
-        public int UpdatePost(Post post)
+        public bool UpdatePost(Post post)
         {
-            _context.Update(post);
-            _context.SaveChanges();
-
-            return post.PostId;
+            return  _post.UpdateAsync(post).Result;
         }
         public bool UpdatePostViews(Post post)
         {

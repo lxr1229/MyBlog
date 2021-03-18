@@ -63,6 +63,17 @@ namespace MyBlog.Controllers
                 var post = _post.GetPost(id.Value);
                 var model = _mapper.Map<Post, PostEditViewModel>(post);
 
+                var tagList = _postTag.GetPostTagList(o => o.PostId == id.Value);
+                var tagNameList = new List<string>();
+                if (tagList.Count > 0)
+                {
+                    foreach (var item in tagList)
+                    {
+                        tagNameList.Add(_tag.GetTag(item.TagId).TagName);
+                    }
+                    model.TagString = string.Join(",", tagNameList);
+                }
+
                 return View(model);
             }
             return View(new PostEditViewModel());
@@ -92,15 +103,15 @@ namespace MyBlog.Controllers
             }
 
             // 添加文章至数据库库
-            if (model.PostId > 0)
+            if (model.PostId.HasValue)
             {
                 var postId = _post.UpdatePost(post);
 
-                _postTag.DeletePostTagList(o => o.PostId == postId);
+                _postTag.DeletePostTagList(o => o.PostId == post.PostId);
 
                 foreach (var item in tagList)
                 {
-                    _postTag.AddPostTag(new PostTag { PostId = postId, TagId = _tag.GetTag(o => o.TagName == item).TagId }, false);
+                    _postTag.AddPostTag(new PostTag { PostId = post.PostId, TagId = _tag.GetTag(o => o.TagName == item).TagId }, false);
                 }
 
             }

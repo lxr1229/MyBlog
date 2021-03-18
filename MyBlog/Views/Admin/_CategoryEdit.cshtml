@@ -1,0 +1,20 @@
+﻿@model CategoryViewModel
+
+@{ }
+
+<form asp-action="EditCategory" asp-controller="Admin" method="post" id="edit_form" style=" margin: 30px;">
+    <div class="form-group">
+        <label class="letterSpacing_3">
+            <span style="color:red">* </span>分类名称
+        </label>
+        <div>
+            <input type="text" asp-for="CategoryName" class="form-control" autocomplete="off" />
+        </div>
+    </div>
+    <div class="form-group mt-20">
+        <div class="text-center">
+            <button type="button" class="btn-edit" onclick="editCategory()">提交</button>
+        </div>
+    </div>
+    <input type="hidden" asp-for="CategoryId" />
+</form>

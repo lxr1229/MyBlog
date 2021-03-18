@@ -1,0 +1,10 @@
+﻿@model CategoryViewModel
+<tr id="category_@Model.CategoryId">
+    <td>@Model.CategoryId</td>
+    <td>@Model.CategoryName</td>
+    <td>@Model.DateCreated</td>
+    <td>
+        <button type="button" class="btn btn-primary btn-xs" size="" onclick="getCategoryEditLayer('@Model.CategoryId')">编辑</button>
+        <button type="button" class="btn btn-danger btn-xs" size="" onclick="deleteCategory('@Model.CategoryId')">删除</button>
+    </td>
+</tr>

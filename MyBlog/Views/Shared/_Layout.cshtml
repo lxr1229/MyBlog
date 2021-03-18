@@ -16,7 +16,7 @@
     <script src="~/lib/jquery-tags-input/js/jquery.tagsinput.js"></script>
     <script src="~/lib/layer/layer.js"></script>
 </head>
-<body>
+<body style="background-color:#f7f2f2">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3" style="background-color:#fee8e8">
             <div class="container">
@@ -34,12 +34,6 @@
                         </li>
                     </ul>
                 </div>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="查询文章" aria-label="Search">
-                    <button type="button" class="btn btn-search">
-                        <img class="img-search" src="~/img/search.svg" />
-                    </button>
-                </form>
                 <partial name="_LoginPartial" />
             </div>
         </nav>
@@ -58,6 +52,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/MarkDown/js/editormd.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/admin.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

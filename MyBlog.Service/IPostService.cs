@@ -11,7 +11,7 @@ namespace MyBlog.Service
         Post GetPost(int id);
         List<Post> GetPostList(Expression<Func<Post, bool>> predicate);
         int AddPost(Post post);
-        int UpdatePost(Post post);
+        bool UpdatePost(Post post);
         bool UpdatePostViews(Post post);
         bool DeletePost(Post post);
         int GetCountUserPosts(string userID);

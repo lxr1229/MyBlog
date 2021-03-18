@@ -34,7 +34,15 @@ namespace MyBlog.Controllers
             if (model.PageIndex == 0) model.PageIndex = 1;
             if (model.PageSize == 0) model.PageSize = 10;
 
-            IPagedList<Post> posts = _post.GetPostList().OrderByDescending(o=>o.DateCreated).ToList().ToPagedList(model.PageIndex,model.PageSize);
+            ViewBag.SearchKey = model.SearchKey;
+
+            var data = _post.GetPostList();
+            if(!string.IsNullOrEmpty(model.SearchKey))
+            {
+               data =  data.FindAll(o => o.Content.Contains(model.SearchKey) || o.Title.Contains(model.SearchKey));
+            }
+
+            IPagedList<Post> posts = data.OrderByDescending(o=>o.DateCreated).ToList().ToPagedList(model.PageIndex,model.PageSize);
             // map to IEnumerable
             IEnumerable<PostListViewModel> postList = _mapper.Map<IEnumerable<PostListViewModel>>(posts);
             // create an instance of StaticPagedList with the mapped IEnumerable and original IPagedList metadata

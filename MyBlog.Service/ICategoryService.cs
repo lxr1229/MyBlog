@@ -10,8 +10,8 @@ namespace MyBlog.Service
         List<Category> GetCategoryList();
         Category GetCategory(int id);
         Category GetCategory(Expression<Func<Category, bool>> predicate);
-        bool AddCategory(Category cate);
-        bool UpdateCategory(Category cate);
+        DataResponse<int> AddCategory(Category cate);
+        DataResponse<int> UpdateCategory(Category cate);
         bool DeleteCategory(Category cate);
     }
 }

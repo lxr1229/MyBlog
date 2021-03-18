@@ -1,0 +1,27 @@
+﻿@model List<CategoryViewModel>
+
+<div class="display_flex justify-content-between mb-20">
+    <h4 class="text-left nav-text nav-box">分类管理</h4>
+    <button id="btn_add" type="button" class="btn btn-primary" onclick="getCategoryEditLayer()">新增分类</button>
+</div>
+
+<div class="text-center">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="category_list">
+            <thead class="thead-light">
+                <tr>
+                    <th class="wd_100">分类Id</th>
+                    <th class="wd_100">分类名</th>
+                    <th class="wd_100">分类创建时间</th>
+                    <th class="wd_100">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @Html.Partial("_CategoryListItem", item)
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

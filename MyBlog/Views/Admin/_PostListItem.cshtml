@@ -1,0 +1,14 @@
+﻿@model List<PostListViewModel>
+
+@foreach (var item in Model)
+{
+<tr id="post_@item.PostId">
+    <td>@item.PostId</td>
+    <td>@item.Title</td>
+    <td>@item.Views</td>
+    <td>@item.DateCreated</td>
+    <td>
+        <a type="button" class="btn btn-primary btn-xs"  asp-action="Edit" asp-controller="Post" asp-route-id="@item.PostId">编辑</a>
+        <button type="button" class="btn btn-danger btn-xs"  onclick="deletePost('@item.PostId')">删除</button>
+    </td>
+</tr>}

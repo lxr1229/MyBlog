@@ -11,4 +11,9 @@ namespace MyBlog.Models
         public string CategoryName { get; set; }
         public DateTime DateCreated { get; set; }
     }
+    public class CategoryEditViewModel
+    {
+        public int? CategoryId { get; set; }
+        public string CategoryName { get; set; }
+    }
 }

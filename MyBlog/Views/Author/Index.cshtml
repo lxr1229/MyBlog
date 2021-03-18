@@ -4,7 +4,7 @@
     ViewData["Title"] = "文章内容";
 }
 <div>
-    <div class="card mt_40 post-card author-background">
+    <div class="card mt-40 post-card author-background">
         <div class="card-body ">
             <div class="text-center">
                 <h4>@Model.UserName</h4>
@@ -17,7 +17,7 @@
     <div class="author-post-container">
         @foreach (var item in Model.PostList)
         {
-            <div class="card mt_40 post-card">
+            <div class="card mt-40 post-card">
                 <div class="card-body ">
                     <h4 class="card-title post-title text-left">@item.Title</h4>
                     <div class="card-subtitle mb-2 post-info">发表于 @item.DateCreated  | 分区 @item.CategoryName | 类型 @item.PostTypeId.ToString() | 阅读量 @item.Views</div>

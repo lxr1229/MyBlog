@@ -14,6 +14,7 @@ namespace MyBlog
             CreateMap<PostTag, PostTagViewModel>();
             CreateMap<Tag, TagViewModel>();
             CreateMap<Category, CategoryViewModel>();
+            CreateMap<CategoryEditViewModel, Category>();
         }
     }
 }

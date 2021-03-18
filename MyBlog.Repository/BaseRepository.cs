@@ -165,7 +165,7 @@ namespace MyBlog.Repository
         }
         public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await Task.Run(() => _context.Set<TEntity>().Where(predicate).ToListAsync());
+            return await Task.Run(() => _context.Set<TEntity>().Where(predicate).AsNoTracking().ToListAsync());
         }
 
         public async Task<TEntity> GetAsync(int id)

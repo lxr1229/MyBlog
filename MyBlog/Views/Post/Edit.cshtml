@@ -12,35 +12,39 @@
     </div>
     <div class="col-xs-12 col-md-12">
         <form asp-controller="Post" asp-action="Edit" method="post">
-            <div class="row align-items-center mt_20">
+            <div class="row align-items-center mt-20">
                 <div class="col-auto">
                     <label for="title" class="col-form-label">标题</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" asp-for="Title" class="form-control wd_400">
+                    <input type="text" asp-for="Title" class="form-control wd-400">
                 </div>
             </div>
-            <div class="row align-items-center mt_20">
+            <div class="row align-items-center mt-20">
                 <div class="col-auto">
                     <label for="category" class="col-form-label">分类</label>
                 </div>
                 <div class="col-auto">
-                    <select class="form-select form-control wd_400" id="post_category">
+                    <select class="form-select form-control wd-400" id="post_category">
                         <option selected value="">请选择分类</option>
                         @foreach (var item in categoryList)
                         {
+                            if (Model.CategoryId == item.CategoryId)
+                            {
+                                <option value="@item.CategoryId" selected>@item.CategoryName</option>
+                            }
                             <option value="@item.CategoryId">@item.CategoryName</option>
                         }
                     </select>
                 </div>
             </div>
-            <div class="row mt_20">
-                <label for="content" class="col-form-label ml_15">内容</label>
-                <div id="post_editormd" class="ml_30 ">
+            <div class="row mt-20">
+                <label for="content" class="col-form-label ml-15">内容</label>
+                <div id="post_editormd" class="ml-30 ">
                     <textarea asp-for="ContentMarkDown" style="display: none;">@Html.Raw(Model.ContentMarkDown)</textarea>
                 </div>
             </div>
-            <div class="row align-items-center mt_20">
+            <div class="row align-items-center mt-20">
                 <div class="col-auto">
                     <label for="title" class="col-form-label">类型</label>
                 </div>
@@ -61,12 +65,12 @@
                     }
                 </div>
             </div>
-            <div class="row align-items-center mt_20">
+            <div class="row align-items-center mt-20">
                 <div class="col-auto">
                     <label for="tags" class="col-form-label">标签</label>
                 </div>
                 <div class="col-auto">
-                    <input class="form-control wd_400" asp-for="TagString" value="" />
+                    <input class="form-control wd-400" asp-for="TagString" value="@Model.TagString" />
                 </div>
                 <div>
                     <span class="col-xs-6 help-block">添加相关标签，用空格分隔</span>
@@ -76,7 +80,7 @@
             <input asp-for="PostId" type="hidden" />
             <input asp-for="Content" type="hidden" />
 
-            <div class="form-group mt_20">
+            <div class="form-group mt-20">
                 <div class="text-center">
                     <button type="button" class="btn-edit" onclick="btnSave()">提交</button>
                 </div>

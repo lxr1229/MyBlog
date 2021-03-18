@@ -5,7 +5,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="dropdown">
-            <a id="manage" class="dropdown-toggle" data-toggle="dropdown">
+            <a id="manage" class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer">
                 Hello @UserManager.GetUserName(User)!
                 <b class="caret"></b>
             </a>
@@ -19,6 +19,7 @@
                 <li>
                     <a href="/Post/Edit" class="dropdown-item">发表文章</a>
                 </li>
+                <li><hr class="dropdown-divider"></li>
                 <li>
                     <form id="logoutForm" class="form-inline dropdown-item" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <button id="logout" type="submit" class="nav-link btn btn-link text-dark" style="right:0;padding-left:0">退出登录</button>
